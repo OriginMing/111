@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .body{
+        margin: 0;
+    }
+    li{
+        list-style: none;
+    }
+    .one{
+        width: 484px;
+        height: 301px;
+        border-bottom: 15px solid #f5f5f5;
+        position: relative;
+        background-color: #fff;
+    }
+    .two{
+     
+    width: 462px;
+    height: 282px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .09);
+    position: relative;
+    }
+    
+    .two li p{
+        line-height: 20px;
+        font-size: 18px;
+        margin-top: 16px;
+    }
+    .two li{
+        
+    }
+    .two .li1{
+        height: 57px;
+        width: 191px;
+        cursor: pointer;
+        line-height: 30px;
+        padding: 0 20px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: seagreen;
+        position: absolute;
+        left: 0px ;
+        float: left;
+    }
+    .two .li2{
+        height: 57px;
+        width: 191px;
+        cursor: pointer;
+        line-height: 30px;
+        padding: 0 20px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: seagreen;
+        float: right;
+    }
+    .boot1 .boot1-detial a{
+        float: left;
+        height: 225px;
+        width: 462px;
+        display: block;
+    }
+    .right-detail{
+        position: absolute;
+        top: 153px;
+        height: 87px;
+        width: 291px;
+        background-image: url(imgs/TB1AnTXewMPMeJjy1XcXXXpppXa-290-87.png);
+        background-position: 0 center;
+        background-color: rgba(0, 0, 0, 0);
+        background-repeat: no-repeat;
+        z-index: 99;
+    }
+    .title-wrap{
+        margin-left: 26px;
+        margin-top: 8px;
+        vertical-align: middle !important;
+    }
+    .tab-item-title{
+        margin-left: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #00B262;
+    }
+    .tab-desp{
+        margin-left: 26px;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .item-img{
+        float: right;
+        margin-top: 10px;
+        margin-right: 30px;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <div class="one">
+        <div class="two">
+            <ul class="li">
+                <li class="li2 " style="background-color: #f5f5f5;"><p>量贩装</p></li>
+                <li class="li1" style="background-color: #00B262 ;"><p>今日疯抢</p></li>
+                 
+            </ul>
+            <div class="boot1">
+                <div class="boot1-detial" style="display: block; ">
+                    <a href="#">
+                        <div class="right-detail">
+                            <div class="title-wrap">
+                                <img src="imgs/TB12RqQewMPMeJjy1XdXXasrXXa-23-23.png" alt="">
+                                <span class="tab-item-title"> 零食欢乐购</span>
+                            </div>
+                            <div style="color: #000;"><span class="tab-desp">爆款直降</span></div>
+                        </div>
+                        <img  class="item-img" src="imgs/TB1_O_LgSrqK1RjSZK9XXXyypXa-400-400.jpg" alt="">
+                    </a>
+                </div>
+
+                <div class="boot1-detial  " style="display: none;">
+                    <a href="#">
+                        <div class="right-detail">
+                            <div class="title-wrap">
+                                <img src="imgs/TB12RqQewMPMeJjy1XdXXasrXXa-23-23.png" alt="">
+                                <span class="tab-item-title"> 爆款直降</span>
+                            </div>
+                            <div style="color: #000;"><span class="tab-desp">粮油调味</span></div>
+                        </div>
+                        <img  class="item-img" src="imgs/TB1jNScP6TpK1RjSZKPXXa3UpXa-400-400.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        var div = document.getElementsByClassName("boot1-detial");
+        var li = document.getElementsByClassName("li1")[0];
+        var li1 = document.getElementsByClassName("li2")[0];
+
+        li.onmouseover = function(){
+            div[0].style.display = 'block';
+            div[1].style.display = 'none';
+            li1.style.backgroundColor = '#f5f5f5';
+            li.style.backgroundColor = "#00B262";
+
+
+            
+        }
+        li1.onmouseover = function(){
+            div[0].style.display = 'none';
+            div[1].style.display = 'block';
+            li.style.backgroundColor = "#f5f5f5";
+            li1.style.backgroundColor = '#00B262';
+            
+        }
+        setInterval(function(){
+            div[0].style.display = 'block';
+            div[1].style.display = 'none';
+            li1.style.backgroundColor = '#f5f5f5';
+            li.style.backgroundColor = "#00B262";},2000);
+
+            setInterval(function(){
+            div[0].style.display = 'none';
+            div[1].style.display = 'block';
+            li.style.backgroundColor = "#f5f5f5";
+            li1.style.backgroundColor = '#00B262';},3000);
+
+
+
+    </script>
+</body>
+</html>

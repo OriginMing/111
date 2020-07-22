@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+     body{
+       background: url(timg.jpg) no-repeat;
+       background-size: cover;
+     }
+     .life{
+         font-size: 30px;
+         font-weight: 700;
+         bottom: 10px;
+         right: 10px;
+         position: fixed;
+         background-color: cornflowerblue;
+         border: 5px;
+         border-radius: 50%;
+     }
+     .selec{
+         height: 300px;
+         width: 300px;
+         background-color: cyan;
+         border-radius: 10%;
+         position: fixed;
+         left: 0;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         margin: auto;
+         display: none;
+         text-align: center;
+         
+     }
+     .x{
+       position: absolute;
+       border-radius: 50%;
+       background-color: darkolivegreen;
+       height: 20px;
+       width: 20px;
+       right:15px;
+       top: 12px;
+       text-align: center;
+     }
+     .selec span{
+         background-color: gold;
+         border-radius: 20%;
+         width: 100px;
+         height: 30px;
+         line-height: 30px;
+         margin: 0 auto;
+         vertical-align: -100px;
+         color: dodgerblue;
+         
+
+     }
+     
+ </style>
+<body>
+  <div class="selec">
+      <span class="reset">重新开始</span><br>
+      
+   <div class="x"> X</div>
+   
+  </div>
+    <div class="life">
+        <span class="lifeVal">10</span>
+        生命值
+    </div>
+    <script>
+        var lifeVal =document.getElementsByClassName("lifeVal")[0];
+        var lifeValue= (parseInt(lifeVal.innerHTML));
+        
+        var letter = ["A","B","C","D","E"]
+        var divs=[]
+        var selec =document.getElementsByClassName("selec")[0];
+        var reset = selec.firstElementChild;
+        console.log(reset)
+        var x = document.getElementsByClassName("x")[0];
+        function create(num){
+            var current = [];
+        for(var i =0;i <num;i++){
+            current.push(letter[Math.floor(letter.length*Math.random())])
+        }
+        
+        for(var i =0;i<current.length;i++){
+        var div = document.createElement("div");
+        console.log(div)
+        var hh =  Math.floor(255*Math.random());
+        div.innerHTML=current[i];
+        document.body.appendChild(div);
+       
+        // div.style.cssText=`position:absolute;left:"+document.documentElement.clientWidth*Math.random()+"px;top:"+20*Math.random()+"px;font-size:"+Math.ceil(10*Math.random())+5+"px;color:rgb(${hh},${hh},${hh})`;
+        div.style.cssText=`position:absolute;left:${document.documentElement.clientWidth*Math.random()}px;top:${20*Math.random()}px;font-size:${Math.ceil(50*Math.random())+20}px;color:rgb(${hh},${Math.ceil(hh/2)},${hh})`;
+    divs.push(div);
+        }
+    }
+    create(3)
+        var speed = 20;
+        function move(){
+      for(var i=0;i<divs.length;i++){
+          divs[i].style.top =divs[i].offsetTop+speed+"px";
+             var d=  divs[i].offsetTop+speed;
+          var h =document.documentElement.clientHeight;
+          if(d > h){
+            document.body.removeChild(divs[i]);
+            divs.splice(i,1);
+              lifeVal.innerHTML = --lifeValue ;
+              if(lifeValue<=0){
+                  selec.style.display = "block"
+                   lifeValue = 10;
+                  clearInterval(t);
+              }
+            create(1);
+            break;
+          }
+        //   console.log(divs[i].style.top);
+      }
+     
+    //  console.log( document.documentElement.clientHeight);
+        }
+       var t= setInterval(move,300)
+        document.onkeydown =function(ev){
+                       var lett=String.fromCharCode(ev.keyCode);
+                       for(var i =0;i<divs.length;i++){
+                           if(divs[i].innerHTML==lett){
+                               document.body.removeChild(divs[i]);
+                               divs.splice(i,1);
+                            
+                               create(1);
+                               break;
+                           }
+                       }
+        }
+        x.onclick = function(){
+            selec.style.display = "none"
+        }
+        reset.onclick = function(){
+            for(var j =0;j<divs.length;j++){
+                    document.body.removeChild(divs[j]);
+                  }
+                  create(2);
+                  lifeVal.innerHTML  =lifeValue;
+            var  t =setInterval(move,50);
+
+            selec.style.display = "none"
+        }
+    </script>
+</body>
+</html>
